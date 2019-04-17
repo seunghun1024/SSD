@@ -11,14 +11,17 @@
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme" >
-        <activity android:name=".SignupPage" >
+        <activity android:name=".MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
+        <activity android:name=".SignupPage" />
+        <activity android:name=".FindId" />
+        <activity android:name=".FindPw" />
+        <activity android:name=".Mainpage" />
         <uses-library android:name="org.apache.http.legacy" android:required="false" />
     </application>
 
