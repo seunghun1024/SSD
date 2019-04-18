@@ -1,12 +1,161 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/findpw_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#52A7E8"
+        android:layout_gravity="center"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="비밀번호 찾기"
+            android:textColor="#fff"
+            android:layout_gravity="center"
+            android:id="@+id/toolbar_title"
+            android:textSize="20sp"
+            />
+    </android.support.v7.widget.Toolbar>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:orientation="vertical" >
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Pw찾는화면" />
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="6"
+            android:text="" />
+
+        <LinearLayout
+            android:layout_width="350dp"
+            android:layout_height="0dp"
+            android:layout_weight="3">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4px"
+                    android:gravity="center"
+                    android:text="아이디     " />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/findpwid"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:hint="아이디 입력하세요        " />
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="350dp"
+            android:layout_height="0dp"
+            android:layout_weight="3">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4px"
+                    android:gravity="center"
+                    android:text="이    름     " />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/findpwname"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:hint="이름을 입력하세요        " />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="350dp"
+            android:layout_height="0dp"
+            android:layout_weight="3" >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:layout_margin="2dp"
+                    android:gravity="center"
+                    android:text="전화번호"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:orientation="horizontal" >
+
+                <EditText
+                    android:id="@+id/findpwphonenumber"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:hint="전화번호을 입력하세요" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="" />
+
+        <Button
+            android:id="@+id/findpwbutton"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:backgroundTint="#52A7E8"
+            android:text="확 인"
+            android:textColor="#ffffff"/>
+
+    </LinearLayout>
 </LinearLayout>
