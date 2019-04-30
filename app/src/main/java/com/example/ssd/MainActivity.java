@@ -1,9 +1,7 @@
 package com.example.ssd;
 
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.StrictMode;
@@ -30,6 +28,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     private EditText loginId;
     private EditText loginPw;
+    static String sttid;
     Button BtnLogin;
     ProgressDialog dialog = null;
     HttpPost httppost;
@@ -63,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void login() {
+        sttid = loginId.getText().toString();
         class logincheck extends AsyncTask<String, Void, String> {
             @SuppressLint("WrongThread")
             protected String doInBackground(String... params) {
