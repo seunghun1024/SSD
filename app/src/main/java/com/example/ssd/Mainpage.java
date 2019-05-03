@@ -1,14 +1,19 @@
 package com.example.ssd;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.graphics.drawable.PaintDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -27,7 +32,7 @@ import java.util.StringTokenizer;
 import static com.example.ssd.MainActivity.sttid;
 
 public class Mainpage extends AppCompatActivity {
-    public static String selectmember = "";
+    public static String selectprise = "";
     private ListView mListView;
     final static ArrayList<String> mprisename = new ArrayList<>();
     final static ArrayList<String> mpriseinfo = new ArrayList<>();
@@ -48,6 +53,37 @@ public class Mainpage extends AppCompatActivity {
         mListView = (ListView) findViewById(R.id.enterpriseview);
 
         enterpriselist();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()) {
+            case R.id.info:
+                Intent userinfo = new Intent(this, UserInfo.class);
+                startActivity(userinfo);
+                return true;
+            case R.id.logout:
+                Toast.makeText(this, "logout 버튼 눌렀을 시 구현하기", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.spec:
+                Toast.makeText(this, "spec 버튼 눌렀을 시 구현하기", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.comstatus:
+                Toast.makeText(this, "comstatus 버튼 눌렀을 시 구현하기", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.interestcom:
+                Toast.makeText(this, "interestcom 버튼 눌렀을 시 구현하기", Toast.LENGTH_SHORT).show();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     public void enterpriselist() {
@@ -110,7 +146,7 @@ public class Mainpage extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 realposition = position;
-                selectmember = mprisename.get(position);
+                selectprise = mprisename.get(position);
                 mListView.setSelector(new PaintDrawable(0xffff0000));
             }
         });
