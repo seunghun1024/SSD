@@ -78,7 +78,7 @@ public class SignupPage extends AppCompatActivity {
 
     //--------------------------아이디 중복체크 메서드--------------------------------------
     public void IdOverlapCheck() {
-        class OverlapCheck extends AsyncTask<String, Void, String> {
+        class IdOverlapCheck extends AsyncTask<String, Void, String> {
             @SuppressLint("WrongThread")
             protected String doInBackground(String... params) {
                 try {
@@ -148,7 +148,7 @@ public class SignupPage extends AppCompatActivity {
                 return "test!!";
             }
         }
-        OverlapCheck task2 = new OverlapCheck();
+        IdOverlapCheck task2 = new IdOverlapCheck();
         task2.execute();
     }
 
