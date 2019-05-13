@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    tools:context=".FirstScreen">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="213dp"
+            android:layout_height="205dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="100dp"
+            android:src="@drawable/first_img" />
+
+        <TextView
+            android:id="@+id/sub_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="야 너두 취업할 수 있어"
+            android:textSize="50sp"
+            android:layout_marginLeft="45dp"
+            android:layout_marginTop="250dp"
+            android:fontFamily="@font/nanumpen"
+            />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="야너두"
+            android:textSize="70sp"
+            android:layout_marginLeft="140dp"
+            android:layout_marginTop="300dp"
+            android:fontFamily="@font/nanumpen"
+            />
+
+        <Button
+            android:id="@+id/first_signup"
+            android:layout_width="250dp"
+            android:layout_height="60dp"
+            android:text="처음 오셨나요?"
+            android:background="#fbbd00"
+            android:textSize="30dp"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="380dp"
+            android:textColor="#fff"
+            android:textStyle="bold"/>
+
+        <Button
+            android:id="@+id/first_login"
+            android:layout_width="250dp"
+            android:layout_height="60dp"
+            android:text="로그인"
+            android:background="#fbbd00"
+            android:textSize="30dp"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="450dp"
+            android:textColor="#fff"
+            android:textStyle="bold"/>
+
+        <Button
+            android:id="@+id/first_main"
+            android:layout_width="250dp"
+            android:layout_height="60dp"
+            android:text="비회원"
+            android:background="#fbbd00"
+            android:textSize="30dp"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="520dp"
+            android:textColor="#fff"
+            android:textStyle="bold"/>
+
+    </RelativeLayout>
+</android.support.constraint.ConstraintLayout>
