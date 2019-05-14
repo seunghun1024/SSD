@@ -75,7 +75,8 @@ public class Mainpage extends AppCompatActivity {
                 logOut();
                 return true;
             case R.id.spec:
-                Toast.makeText(this, "spec 버튼 눌렀을 시 구현하기", Toast.LENGTH_SHORT).show();
+                Intent spec = new Intent(this, Spec.class);
+                startActivity(spec);
                 return true;
             case R.id.comstatus:
                 Toast.makeText(this, "comstatus 버튼 눌렀을 시 구현하기", Toast.LENGTH_SHORT).show();
