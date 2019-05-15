@@ -1,6 +1,8 @@
 package com.example.ssd;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.PaintDrawable;
 import android.os.AsyncTask;
@@ -70,10 +72,11 @@ public class Mainpage extends AppCompatActivity {
                 startActivity(userinfo);
                 return true;
             case R.id.logout:
-                Toast.makeText(this, "logout 버튼 눌렀을 시 구현하기", Toast.LENGTH_SHORT).show();
+                logOut();
                 return true;
             case R.id.spec:
-                Toast.makeText(this, "spec 버튼 눌렀을 시 구현하기", Toast.LENGTH_SHORT).show();
+                Intent spec = new Intent(this, Spec.class);
+                startActivity(spec);
                 return true;
             case R.id.comstatus:
                 Toast.makeText(this, "comstatus 버튼 눌렀을 시 구현하기", Toast.LENGTH_SHORT).show();
@@ -151,5 +154,26 @@ public class Mainpage extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void logOut() {
+        AlertDialog.Builder alert_confirm = new AlertDialog.Builder(Mainpage.this);
+        alert_confirm.setMessage("로그아웃 하시겠습니까?").setCancelable(false).setPositiveButton("확인",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        sttid = null;
+                        Intent MainActivity = new Intent(Mainpage.this, MainActivity.class);
+                        startActivity(MainActivity);
+                    }
+                }).setNegativeButton("취소",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        return;
+                    }
+                });
+        AlertDialog alert = alert_confirm.create();
+        alert.show();
     }
 }
