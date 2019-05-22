@@ -6,7 +6,9 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -39,6 +41,7 @@ public class UserInfo extends AppCompatActivity {
     List<NameValuePair> nameValuePairs;
     ProgressDialog dialog = null;
     String tokenId, tokenPw, tokenName, tokenPhone;
+    @RequiresApi(api = Build.VERSION_CODES.CUPCAKE)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,11 +78,13 @@ public class UserInfo extends AppCompatActivity {
         });
 
         btnLeave.setOnClickListener(new View.OnClickListener(){
+            @RequiresApi(api = Build.VERSION_CODES.CUPCAKE)
             public void onClick(View v) {
                 if (infoboolean == true) {
                     AlertDialog.Builder alert_confirm = new AlertDialog.Builder(UserInfo.this);
                     alert_confirm.setMessage("정말 계정을 탈퇴하시겠습니까?").setCancelable(false).setPositiveButton("확인",
                             new DialogInterface.OnClickListener() {
+                                @RequiresApi(api = Build.VERSION_CODES.CUPCAKE)
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     InfoLeave();
@@ -100,11 +105,17 @@ public class UserInfo extends AppCompatActivity {
         });
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.CUPCAKE)
     public void InfoCheck() {
+        @RequiresApi(api = Build.VERSION_CODES.CUPCAKE)
         class InfoCheck extends AsyncTask<String, Void, String> {
             @SuppressLint("WrongThread")
             protected String doInBackground(String... params) {
                 try {
+                    editTextId.setEnabled(false);
+                    editTextPw.setEnabled(false);
+                    editTextName.setEnabled(false);
+                    editTextPhone.setEnabled(false);
                     httpclient = new DefaultHttpClient();
                     httppost = new HttpPost("http://203.234.62.96:7979/infocheck.php");
                     nameValuePairs = new ArrayList<NameValuePair>(2);
@@ -134,15 +145,10 @@ public class UserInfo extends AppCompatActivity {
                     editTextPw.setText(tokenPw);
                     editTextName.setText(tokenName);
                     editTextPhone.setText(tokenPhone);
-                    editTextId.setEnabled(false);
-                    editTextPw.setEnabled(false);
-                    editTextName.setEnabled(false);
-                    editTextPhone.setEnabled(false);
                 } catch (
                         Exception e)
 
                 {
-                    dialog.dismiss();
                     System.out.println("Exception : " + e.getMessage());
                 }
                 return "test!!";
@@ -152,7 +158,9 @@ public class UserInfo extends AppCompatActivity {
         task2.execute();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.CUPCAKE)
     public void InfoModify() {
+        @RequiresApi(api = Build.VERSION_CODES.CUPCAKE)
         class InfoModify extends AsyncTask<String, Void, String> {
             @SuppressLint("WrongThread")
             protected String doInBackground(String... params) {
@@ -197,7 +205,9 @@ public class UserInfo extends AppCompatActivity {
         task.execute();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.CUPCAKE)
     public void InfoLeave() {
+        @RequiresApi(api = Build.VERSION_CODES.CUPCAKE)
         class InfoLeave extends AsyncTask<String, Void, String> {
             @SuppressLint("WrongThread")
             protected String doInBackground(String... params) {

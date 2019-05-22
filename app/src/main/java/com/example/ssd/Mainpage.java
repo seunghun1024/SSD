@@ -112,15 +112,20 @@ public class Mainpage extends AppCompatActivity {
                             int countTokens = str.countTokens();
                             System.out.println("토큰 수 : " + countTokens);
                             final ArrayList<String> mentername = new ArrayList<>();
-                            // final ArrayList<String> menterinfo = new ArrayList<>();
+                            final ArrayList<String> menterinfo = new ArrayList<>();
                             for (int i = 0; i < countTokens; i++) {
-                                String uid = str.nextToken();
-                                mentername.add(uid);
+                                if(i == 0) {
+                                    String uid = str.nextToken();
+                                    mentername.add(uid);
+                                }else {
+                                    String uid = str.nextToken();
+                                    menterinfo.add(uid);
+                                }
                             }
                             mprisename.clear();
                             mpriseinfo.clear();
                             mprisename.addAll(mentername);
-                            mpriseinfo.addAll(mentername);
+                            mpriseinfo.addAll(menterinfo);
                             dataSetting();
                         }
                     });
