@@ -38,12 +38,16 @@ public class Mainpage extends AppCompatActivity {
     private ListView mListView;
     final static ArrayList<String> mprisename = new ArrayList<>();
     final static ArrayList<String> mpriseinfo = new ArrayList<>();
+    final static ArrayList<String> muid = new ArrayList<>();
     private int realposition;
     ProgressDialog dialog = null;
-    HttpPost httppost;
-    HttpResponse response;
-    HttpClient httpclient;
-    List<NameValuePair> nameValuePairs;
+    HttpPost httppost, httppost2;
+    HttpResponse response, response2;
+    HttpClient httpclient, httpclient2;
+    List<NameValuePair> nameValuePairs, nameValuePairs2;
+    String university, department, opic;
+    Double grades, toeic, toss, training, intern, volunteer, passfail, comsum;
+    int grades2, toeic2, opic2, toss2, training2, intern2, volunteer2, finaleducation2, certificate2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,9 +120,13 @@ public class Mainpage extends AppCompatActivity {
                             for (int i = 0; i < countTokens; i++) {
                                 if(i == 0) {
                                     String uid = str.nextToken();
+                                    muid.add(uid);
+                                    System.out.println("uid값 1 : " + uid);
                                     mentername.add(uid);
                                 }else {
                                     String uid = str.nextToken();
+                                    muid.add(uid);
+                                    System.out.println("uid값 2 : " + uid);
                                     menterinfo.add(uid);
                                 }
                             }
@@ -126,6 +134,7 @@ public class Mainpage extends AppCompatActivity {
                             mpriseinfo.clear();
                             mprisename.addAll(mentername);
                             mpriseinfo.addAll(menterinfo);
+                            mpriseinfo.add(passorfail());
                             dataSetting();
                         }
                     });
@@ -140,6 +149,93 @@ public class Mainpage extends AppCompatActivity {
         }
         Enterpriselistsub task = new Enterpriselistsub();
         task.execute();
+    }
+
+    private String passorfail() {
+        class Passorfailsub extends AsyncTask<String, Void, String> {
+            protected String doInBackground(String... params) {
+                try {
+
+                    httpclient2 = new DefaultHttpClient();
+                    httppost2 = new HttpPost("http://203.234.62.96:7979/speccheck.php");
+                    nameValuePairs2 = new ArrayList<NameValuePair>(2);
+                    nameValuePairs2.add(new BasicNameValuePair("Id", sttid));
+                    httppost2.setEntity(new UrlEncodedFormEntity(nameValuePairs2));
+                    response2 = httpclient2.execute(httppost2);
+
+                    ResponseHandler<String> responseHandler2 = new BasicResponseHandler();
+                    final String response2 = httpclient2.execute(httppost2, responseHandler2);
+                    System.out.println("Response2 : " + response2);
+
+                    StringTokenizer token = new StringTokenizer(response2, ",");
+                    university = token.nextToken();
+                    department = token.nextToken();
+                    grades = Double.parseDouble(token.nextToken()) / 4.5;
+                    toeic = Double.parseDouble(token.nextToken()) / 990;
+                    opic = token.nextToken();
+                    toss = Double.parseDouble(token.nextToken()) / 8;
+                    training = Double.parseDouble(token.nextToken());
+                    intern = Double.parseDouble(token.nextToken());
+                    volunteer = Double.parseDouble(token.nextToken());
+
+                    httpclient = new DefaultHttpClient();
+                    httppost = new HttpPost("http://203.234.62.96:7979/passorfail.php");
+                    nameValuePairs = new ArrayList<NameValuePair>(2);
+                    nameValuePairs.add(new BasicNameValuePair("muid", muid.get(0)));
+                    httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+                    response = httpclient.execute(httppost);
+
+                    ResponseHandler<String> responseHandler = new BasicResponseHandler();
+                    final String response = httpclient.execute(httppost, responseHandler);
+                    System.out.println("Response : " + response);
+                    System.out.println("받아온 관리자 값 : " + muid.get(0));
+
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            StringTokenizer str = new StringTokenizer(response, ",");
+                            int countTokens = str.countTokens();
+                            System.out.println("토큰 수 : " + countTokens);
+
+                            grades2 = Integer.parseInt(str.nextToken());
+                            toeic2 = Integer.parseInt(str.nextToken());
+                            opic2 = Integer.parseInt(str.nextToken());
+                            toss2 = Integer.parseInt(str.nextToken());
+                            training2 = Integer.parseInt(str.nextToken());
+                            intern2 = Integer.parseInt(str.nextToken());
+                            volunteer2 = Integer.parseInt(str.nextToken());
+                            finaleducation2 = Integer.parseInt(str.nextToken());
+                            certificate2 = Integer.parseInt(str.nextToken());
+
+                            comsum = (grades2 + toeic2 + opic2 + toss2 + training2 + intern2 + volunteer2 + finaleducation2 + certificate2) / 100d;
+                            passfail = (grades * (grades2/comsum)) + (toeic * (toeic2/comsum)) + (toss * (toss2/comsum)) + (training * (training2/comsum)) + (intern * (intern2/comsum)) + (volunteer * (volunteer2/comsum) /* finale~~~~ 추가해야됨 ~~~~~~~~~*/);
+                            System.out.println(passfail);
+
+                            /*for (int i = 0; i < countTokens; i++) {
+                                if(i == 0) {
+                                    String uid = str.nextToken();
+                                    System.out.println("uid값 1 : " + uid);
+                                }else {
+                                    String uid = str.nextToken();
+                                    System.out.println("uid값 2 : " + uid);
+                                }
+                            }*/
+                        }
+                    });
+
+
+                } catch (
+                        Exception e) {
+                    System.out.println("Exception : " + e.getMessage());
+                }
+                System.out.println("끝!");
+                return "test!!";
+            }
+        }
+        Passorfailsub task = new Passorfailsub();
+        task.execute();
+
+        return "결과값";
     }
 
 
