@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
+import static com.example.ssd.MainActivity.sttid;
 import static com.example.ssd.Spec.specgrades;
 import static com.example.ssd.Spec.spectoeic;
 import static com.example.ssd.Spec.specopic;
@@ -37,7 +38,7 @@ public class PassWhether extends AppCompatActivity {
     String nopassgrades, nopasstoeic, nopassopic, nopasstoss, nopasstraining, nopassintern, nopassvolunteer;
     int entergrades, entertoeic, enteropic, entertoss, entertraining, enterintern, entervolunteer;
     double entersum;
-    private Button btntest;
+    private Button btntest, btntest2;
     final static double alpha = 0.01;
     static ArrayList<Double> grade = new ArrayList<Double>();
     static ArrayList<Double> toeic = new ArrayList<Double>();
@@ -76,6 +77,7 @@ public class PassWhether extends AppCompatActivity {
         //testt();
 
         btntest = (Button) findViewById(R.id.buttontest);
+        btntest2 = (Button) findViewById(R.id.buttontest2);
 
         btntest.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,6 +85,17 @@ public class PassWhether extends AppCompatActivity {
                 new Thread(new Runnable() {
                     public void run() {
                         passabc();
+                    }
+                }).start();
+            }
+        });
+
+        btntest2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Thread(new Runnable() {
+                    public void run() {
+                        passghi();
                     }
                 }).start();
             }
@@ -360,6 +373,38 @@ public class PassWhether extends AppCompatActivity {
             }
         }*/
         System.out.println("맞은 갯수 = " + check + " , 정확도 = " + check / (double) pass.size()); // check에서 전체 개수를 나누어 정확도 측정
+    }
+
+    public void passghi() {
+        class passGHI extends AsyncTask<String, Void, String> {
+            @SuppressLint("WrongThread")
+            protected String doInBackground(String... params) {
+                try {
+                    httpclient = new DefaultHttpClient();
+                    httppost = new HttpPost("http://203.234.62.96:7979/addenterprise.php");
+                    nameValuePairs = new ArrayList<NameValuePair>(2);
+                    nameValuePairs.add(new BasicNameValuePair("sttid", sttid));
+                    nameValuePairs.add(new BasicNameValuePair("enterId", enterid));
+                    httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+                    response = httpclient.execute(httppost);
+
+                    ResponseHandler<String> responseHandler = new BasicResponseHandler();
+                    final String response = httpclient.execute(httppost, responseHandler);
+                    System.out.println("noResponse : " + response);
+
+
+                } catch (
+                        Exception e)
+
+                {
+                    // dialog.dismiss();
+                    System.out.println("Exception : " + e.getMessage());
+                }
+                return "test!!";
+            }
+        }
+        passGHI task2 = new passGHI();
+        task2.execute();
     }
 
     public static double Sigmoid(double Beta){
