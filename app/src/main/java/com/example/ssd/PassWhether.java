@@ -37,7 +37,7 @@ public class PassWhether extends AppCompatActivity {
     String passgrades, passtoeic, passopic, passtoss, passtraining, passintern, passvolunteer;
     String nopassgrades, nopasstoeic, nopassopic, nopasstoss, nopasstraining, nopassintern, nopassvolunteer;
     int entergrades, entertoeic, enteropic, entertoss, entertraining, enterintern, entervolunteer;
-    double entersum;
+    double entersum, avegrades, avetoeic, sumgrades, sumtoeic;
     private Button btntest, btntest2;
     final static double alpha = 0.01;
     static ArrayList<Double> grade = new ArrayList<Double>();
@@ -200,8 +200,12 @@ public class PassWhether extends AppCompatActivity {
                         intern.add((enterintern/entersum)*Double.valueOf(passintern));
                         volunteer.add((entervolunteer/entersum)*Double.valueOf(passvolunteer));
                         pass.add(1);
+                        sumgrades += Double.valueOf(passgrades);
+                        sumtoeic += Double.valueOf(passtoeic);
                         System.out.println(passgrades + "~~" + passtraining + "~~" + passintern + "~~2" + passvolunteer);
                     }
+                    avegrades = sumgrades/i;
+                    avetoeic = sumtoeic/i;
 
 
 
@@ -372,7 +376,7 @@ public class PassWhether extends AppCompatActivity {
                 check++;
             }
         }*/
-        System.out.println("맞은 갯수 = " + check + " , 정확도 = " + check / (double) pass.size()); // check에서 전체 개수를 나누어 정확도 측정
+        System.out.println("평균학점 : " + avegrades + "  평균토익 : " + avetoeic + "  내 학점 : " + specgrades + "  내 토익 : " + spectoeic);
     }
 
     public void passghi() {
