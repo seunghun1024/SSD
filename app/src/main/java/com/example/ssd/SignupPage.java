@@ -59,7 +59,8 @@ public class SignupPage extends AppCompatActivity {
         btninsert.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-               insert();
+                Intent intent = new Intent(getApplicationContext(),InputSpec.class);
+                startActivity(intent);
             }
         });
 

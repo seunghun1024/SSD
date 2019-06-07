@@ -191,7 +191,7 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:backgroundTint="#52A7E8"
-            android:text="가입하기"
+            android:text="스펙입력"
             android:textColor="#ffffff"/>
 
         <TextView

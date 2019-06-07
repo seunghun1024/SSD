@@ -203,6 +203,6 @@
         android:layout_height="wrap_content"
 
         android:layout_marginLeft="150dp"
-        android:text="저장" />
+        android:text="가입 완료" />
 
 </LinearLayout>
