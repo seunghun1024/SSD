@@ -63,20 +63,7 @@
 
             <EditText
 
-                android:layout_width="289dp"
-                android:layout_height="50dp" />
-
-
-        </TableRow>
-        <TableRow>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:text="총점"
-                android:textSize="25sp"
-                />
-            <EditText
-
+                android:id="@+id/insertgrades"
                 android:layout_width="289dp"
                 android:layout_height="50dp" />
 
@@ -91,6 +78,7 @@
                 />
             <EditText
 
+                android:id="@+id/inserttoeic"
                 android:layout_width="289dp"
                 android:layout_height="50dp" />
 
@@ -105,6 +93,7 @@
                 />
             <EditText
 
+                android:id="@+id/insertopic"
                 android:layout_width="289dp"
                 android:layout_height="50dp" />
 
@@ -119,6 +108,7 @@
                 />
             <EditText
 
+                android:id="@+id/inserttoss"
                 android:layout_width="289dp"
                 android:layout_height="50dp" />
 
@@ -133,17 +123,24 @@
                 />
 
             <TableRow>
+                <RadioGroup
+                    android:id="@+id/studytrainradiogroup2"
+                    android:orientation="horizontal"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
                 <RadioButton
-                    android:id="@+id/radioButton1"
+                    android:id="@+id/studytrainyes2"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:text="유" />
 
                 <RadioButton
-                    android:id="@+id/radioButton2"
+                    android:id="@+id/studytrainno2"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:text="무" />
+                </RadioGroup>
             </TableRow>
         </TableRow>
         <TableRow>
@@ -154,17 +151,24 @@
                 android:textSize="25sp"
                 />
             <TableRow>
+                <RadioGroup
+                    android:id="@+id/internradiogroup2"
+                    android:orientation="horizontal"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
                 <RadioButton
-                    android:id="@+id/radioButton3"
+                    android:id="@+id/internyes2"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:text="유" />
 
                 <RadioButton
-                    android:id="@+id/radioButton4"
+                    android:id="@+id/internno2"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:text="무" />
+                </RadioGroup>
             </TableRow>
 
 
@@ -177,17 +181,24 @@
                 android:textSize="25sp"
                 />
             <TableRow>
+                <RadioGroup
+                    android:id="@+id/volunteerradiogroup2"
+                    android:orientation="horizontal"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
                 <RadioButton
-                    android:id="@+id/radioButton5"
+                    android:id="@+id/volunteeryes2"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:text="유" />
 
                 <RadioButton
-                    android:id="@+id/radioButton6"
+                    android:id="@+id/volunteerno2"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:text="무" />
+                </RadioGroup>
             </TableRow>
 
         </TableRow>

@@ -37,6 +37,7 @@ public class SignupPage extends AppCompatActivity {
     private EditText editTextName;
     private EditText editTextPhone;
     private boolean validate = false;
+    static String Id;
     Button BtnIdOverlapCheck, btninsert;
     ProgressDialog dialog = null;
     HttpPost httppost;
@@ -135,6 +136,7 @@ public class SignupPage extends AppCompatActivity {
                                 alert3.setMessage("사용 가능한 아이디입니다.");
                                 validate = true;
                                 editTextId.setEnabled(false);
+                                Id = editTextId.getText().toString();
                                 alert3.show();
                             }
                         });
