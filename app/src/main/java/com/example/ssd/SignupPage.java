@@ -45,9 +45,9 @@ public class SignupPage extends AppCompatActivity {
     List<NameValuePair> nameValuePairs;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.sign_up);
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.sign_up);
 
         editTextId = (EditText) findViewById(R.id.ID);
         editTextPw = (EditText) findViewById(R.id.PW);

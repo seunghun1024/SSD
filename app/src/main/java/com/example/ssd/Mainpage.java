@@ -58,6 +58,9 @@ public class Mainpage extends AppCompatActivity {
 
         mListView = (ListView) findViewById(R.id.enterpriseview);
 
+        Spec spec = new Spec();
+        spec.SpecCheck();
+
         enterpriselist();
     }
 
@@ -276,5 +279,10 @@ public class Mainpage extends AppCompatActivity {
                 });
         AlertDialog alert = alert_confirm.create();
         alert.show();
+    }
+
+    public void btntest(View v) {
+        Intent test = new Intent(Mainpage.this, PassWhether.class);
+        startActivity(test);
     }
 }
