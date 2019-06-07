@@ -9,11 +9,14 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.text.InputType;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -48,6 +51,7 @@ public class Mainpage extends AppCompatActivity {
     String university, department, opic;
     Double grades, toeic, toss, training, intern, volunteer, passfail, comsum;
     int grades2, toeic2, opic2, toss2, training2, intern2, volunteer2, finaleducation2, certificate2;
+    EditText editSearch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,10 +60,21 @@ public class Mainpage extends AppCompatActivity {
         ActionBar ab = getSupportActionBar();
         ab.setTitle("야너두");
 
-        mListView = (ListView) findViewById(R.id.enterpriseview);
+        editSearch = (EditText) findViewById(R.id.main_search);
 
+        editSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),Search.class);
+                startActivity(intent);
+            }
+        });
+
+        mListView = (ListView) findViewById(R.id.enterpriseview);
         enterpriselist();
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
