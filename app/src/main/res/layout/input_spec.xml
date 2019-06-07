@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/signup_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#52A7E8"
+        android:layout_gravity="center"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="이력서 작성"
+            android:textColor="#fff"
+            android:layout_gravity="center"
+            android:id="@+id/toolbar_title"
+            android:textSize="20sp"
+            />
+    </android.support.v7.widget.Toolbar>
+
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <TableRow>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="최종 학력"
+                android:textSize="25sp"
+                />
+
+            <Spinner
+                android:id="@+id/spinner_Academic"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_weight="1"/>
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="전공명"
+                android:textSize="25sp"
+                />
+
+            <Spinner
+                android:id="@+id/spinner_major"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_weight="1"/>
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:text="학점"
+                android:textSize="25sp"
+                />
+
+            <EditText
+
+                android:layout_width="289dp"
+                android:layout_height="50dp" />
+
+
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="총점"
+                android:textSize="25sp"
+                />
+            <EditText
+
+                android:layout_width="289dp"
+                android:layout_height="50dp" />
+
+
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="토익"
+                android:textSize="25sp"
+                />
+            <EditText
+
+                android:layout_width="289dp"
+                android:layout_height="50dp" />
+
+
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="오픽"
+                android:textSize="25sp"
+                />
+            <EditText
+
+                android:layout_width="289dp"
+                android:layout_height="50dp" />
+
+
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="토스"
+                android:textSize="25sp"
+                />
+            <EditText
+
+                android:layout_width="289dp"
+                android:layout_height="50dp" />
+
+
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="연수 경험"
+                android:textSize="25sp"
+                />
+
+            <TableRow>
+                <RadioButton
+                    android:id="@+id/radioButton1"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="유" />
+
+                <RadioButton
+                    android:id="@+id/radioButton2"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="무" />
+            </TableRow>
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="인턴 경험"
+                android:textSize="25sp"
+                />
+            <TableRow>
+                <RadioButton
+                    android:id="@+id/radioButton3"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="유" />
+
+                <RadioButton
+                    android:id="@+id/radioButton4"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="무" />
+            </TableRow>
+
+
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="봉사 경험"
+                android:textSize="25sp"
+                />
+            <TableRow>
+                <RadioButton
+                    android:id="@+id/radioButton5"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="유" />
+
+                <RadioButton
+                    android:id="@+id/radioButton6"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="무" />
+            </TableRow>
+
+        </TableRow>
+
+    </TableLayout>
+
+    <Button
+        android:id="@+id/save"
+        android:background="#52A7E8"
+        android:textColor="#fff"
+        android:textSize="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginLeft="150dp"
+        android:text="저장" />
+
+</LinearLayout>
