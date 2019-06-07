@@ -40,14 +40,12 @@ public class ListViewAdapter extends BaseAdapter {
 
         /* 'listview_custom'에 정의된 위젯에 대한 참조 획득 */
         TextView tv_name = (TextView) convertView.findViewById(R.id.textView_enterprisename) ;
-        TextView tv_info = (TextView) convertView.findViewById(R.id.textView_enterpriseinfo) ;
 
         /* 각 리스트에 뿌려줄 아이템을 받아오는데 mMyItem 재활용 */
         Enterprise myItem = getItem(position);
 
         /* 각 위젯에 세팅된 아이템을 뿌려준다 */
         tv_name.setText(myItem.getPrisename());
-        tv_info.setText(myItem.getPriseinfo());
 
         /* (위젯에 대한 이벤트리스너를 지정하고 싶다면 여기에 작성하면된다..)  */
 
@@ -55,12 +53,11 @@ public class ListViewAdapter extends BaseAdapter {
         return convertView;
     }
 
-    public void addItem(ArrayList<String> name, ArrayList<String> info) {
+    public void addItem(ArrayList<String> name) {
 
         for(int i = 0; i < name.size(); i++){
             Enterprise tenter = new Enterprise();
             tenter.setPrisename(name.get(i));
-            tenter.setPriseinfo(info.get(i));
             mItems.add(tenter);
         }
     }

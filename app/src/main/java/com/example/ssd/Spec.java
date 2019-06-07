@@ -46,7 +46,8 @@ public class Spec extends AppCompatActivity {
     HttpClient httpclient;
     List<NameValuePair> nameValuePairs;
     ProgressDialog dialog = null;
-    String university, department, grades, toeic, opic, toss, training, intern, volunteer;
+    String specuniversity, specdepartment;
+    static double specgrades, spectoeic, specopic, spectoss, spectraining, specintern, specvolunteer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -128,7 +129,20 @@ public class Spec extends AppCompatActivity {
                     AlertDialog alert = alert_confirm.create();
                     alert.show();
                 }else{
-                  //  SpecModify();
+                    SpecModify();
+                    editTextGrade.setEnabled(false);
+                    editTextTOEIC.setEnabled(false);
+                    editTextOPIC.setEnabled(false);
+                    editTextTOS.setEnabled(false);
+                    studytrainbuttonyes.setEnabled(false);
+                    studytrainbuttonno.setEnabled(false);
+                    internbuttonyes.setEnabled(false);
+                    internbuttonno.setEnabled(false);
+                    volunteerbuttonyes.setEnabled(false);
+                    volunteerbuttonno.setEnabled(false);
+                    btnSpecModify.setText("수정하기");
+                    btnSpecReset.setText("스펙 초기화");
+                    specboolean = true;
                 }
             }
         });
@@ -210,20 +224,25 @@ public class Spec extends AppCompatActivity {
                     });
 
                     StringTokenizer token = new StringTokenizer(response, ",");
-                    university = token.nextToken();
-                    department = token.nextToken();
-                    grades = token.nextToken();
-                    toeic = token.nextToken();
-                    opic = token.nextToken();
-                    toss = token.nextToken();
-                    training = token.nextToken();
-                    intern = token.nextToken();
-                    volunteer = token.nextToken();
+                    specuniversity = token.nextToken();
+                    specdepartment = token.nextToken();
+                    specgrades = Double.valueOf(token.nextToken());
+                    spectoeic = Double.valueOf(token.nextToken());
+                    String a = token.nextToken();
+                    // specopic = token.nextToken();
+                    spectoss = Double.valueOf(token.nextToken());
+                    spectraining = Double.valueOf(token.nextToken());
+                    specintern = Double.valueOf(token.nextToken());
+                    specvolunteer = Double.valueOf(token.nextToken());
 
-                    editTextGrade.setText(grades);
-                    editTextTOEIC.setText(toeic);
-                    editTextOPIC.setText(opic);
-                    editTextTOS.setText(toss);
+                    if(a == "AL"){
+                        specopic = 2;
+                    }
+
+                    editTextGrade.setText(Double.toString(specgrades));
+                    editTextTOEIC.setText(Double.toString(spectoeic));
+                    editTextOPIC.setText(Double.toString(specopic));
+                    editTextTOS.setText(Double.toString(spectoss));
                     editTextGrade.setEnabled(false);
                     editTextTOEIC.setEnabled(false);
                     editTextOPIC.setEnabled(false);
@@ -234,19 +253,19 @@ public class Spec extends AppCompatActivity {
                     internbuttonno.setEnabled(false);
                     volunteerbuttonyes.setEnabled(false);
                     volunteerbuttonno.setEnabled(false);
-                    System.out.println(training + "~~" + intern + "~~" + volunteer);
+                    System.out.println(spectraining + "~!!!!!!~" + specintern + "~~" + specvolunteer);
 
-                    if(training.equals("1")) {
+                    if(spectraining == 1) {
                         studytrainbuttonyes.setChecked(true);
                     }else{
                         studytrainbuttonno.setChecked(true);
                     }
-                    if(intern.equals("1")) {
+                    if(specintern == 1) {
                         internbuttonyes.setChecked(true);
                     }else{
                         internbuttonno.setChecked(true);
                     }
-                    if(volunteer.equals("1")){
+                    if(specvolunteer == 1){
                         volunteerbuttonyes.setChecked(true);
                     }else{
                         volunteerbuttonno.setChecked(true);
@@ -262,6 +281,81 @@ public class Spec extends AppCompatActivity {
             }
         }
         SpecCheck task2 = new SpecCheck();
+        task2.execute();
+    }
+
+    public void SpecModify() {
+        class SpecModify extends AsyncTask<String, Void, String> {
+            @SuppressLint("WrongThread")
+            protected String doInBackground(String... params) {
+                try {
+                    int a = 0, b = 0, c = 0;
+
+                    if(Studytrain.contains("studytrainyes")){
+                        a = 1;
+                    }else{
+                        a = 0;
+                    }
+                    if(Intern.contains("internbuttonyes")){
+                        b = 1;
+                    }else{
+                        b = 0;
+                    }
+                    if(Volunteer.contains("volunteerbuttonyes")){
+                        c = 1;
+                    }else{
+                        c = 0;
+                    }
+
+
+                    httpclient = new DefaultHttpClient();
+                    httppost = new HttpPost("http://203.234.62.96:7979/specmodify.php");
+                    nameValuePairs = new ArrayList<NameValuePair>(2);
+                    nameValuePairs.add(new BasicNameValuePair("Id", sttid));
+                    nameValuePairs.add(new BasicNameValuePair("Grade", editTextGrade.getText().toString()));
+                    nameValuePairs.add(new BasicNameValuePair("Toeic", editTextTOEIC.getText().toString()));
+                    nameValuePairs.add(new BasicNameValuePair("Opic", editTextOPIC.getText().toString()));
+                    nameValuePairs.add(new BasicNameValuePair("Toss", editTextTOS.getText().toString()));
+                    nameValuePairs.add(new BasicNameValuePair("Training", Integer.toString(a)));
+                    nameValuePairs.add(new BasicNameValuePair("Intern", Integer.toString(b)));
+                    nameValuePairs.add(new BasicNameValuePair("Volunteer", Integer.toString(c)));
+                    httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+                    response = httpclient.execute(httppost);
+
+                    ResponseHandler<String> responseHandler = new BasicResponseHandler();
+                    final String response = httpclient.execute(httppost, responseHandler);
+                    System.out.println("Response : " + response);
+
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            System.out.println("Response from PHP : " + response);
+                            //dialog.dismiss();
+                        }
+                    });
+
+                    editTextGrade.setEnabled(false);
+                    editTextTOEIC.setEnabled(false);
+                    editTextOPIC.setEnabled(false);
+                    editTextTOS.setEnabled(false);
+                    studytrainbuttonyes.setEnabled(false);
+                    studytrainbuttonno.setEnabled(false);
+                    internbuttonyes.setEnabled(false);
+                    internbuttonno.setEnabled(false);
+                    volunteerbuttonyes.setEnabled(false);
+                    volunteerbuttonno.setEnabled(false);
+                    System.out.println(spectraining + "~!!!!!!~" + specintern + "~~" + specvolunteer);
+                } catch (
+                        Exception e)
+
+                {
+                    // dialog.dismiss();
+                    System.out.println("Exception : " + e.getMessage());
+                }
+                return "test!!";
+            }
+        }
+        SpecModify task2 = new SpecModify();
         task2.execute();
     }
 }
