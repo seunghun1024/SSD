@@ -14,15 +14,26 @@
         tools:layout_editor_absoluteY="0dp"
         tools:ignore="MissingConstraints">
 
-        <TextView
-            android:layout_width="230dp"
-            android:layout_height="100dp"
-            android:layout_alignParentTop="true"
+
+
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="45dp"
-            android:gravity="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-            android:textSize="36sp" />
+            android:layout_marginTop="30dp"
+            android:src="@drawable/password" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="야 너두 로그인할 수 있어"
+            android:textSize="35dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="120dp"
+            android:fontFamily="@font/nanumpen"/>
+
+
+
         <!--  android:background="@drawable/wassup"  -->
 
         <EditText
@@ -30,7 +41,7 @@
             android:layout_width="300dp"
             android:layout_height="50dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="170dp"
+            android:layout_marginTop="190dp"
             android:hint=" 로그인 ID" />
         <!--   android:background="@drawable/border"   -->
 
@@ -38,7 +49,7 @@
             android:id="@+id/PW"
             android:layout_width="300dp"
             android:layout_height="50dp"
-            android:layout_marginTop="230dp"
+            android:layout_marginTop="250dp"
             android:layout_centerHorizontal="true"
             android:inputType="textPassword"
             android:hint=" 비밀번호 " />
@@ -50,25 +61,14 @@
             android:layout_height="55dp"
             android:layout_centerInParent="true"
             android:layout_below="@+id/PW"
-            android:layout_marginTop="20dp"
-            android:background="#52A7E8"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/radius"
             android:text="로그인"
             android:textSize="20dp"
             android:textColor="#ffffff"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            style="?android:attr/borderlessButtonStyle"/>
 
-        <Button
-            android:id="@+id/signupButton"
-            android:layout_width="300dp"
-            android:layout_height="55dp"
-            android:layout_centerInParent="true"
-            android:layout_below="@+id/findID"
-            android:onClick="btnsignup"
-            android:background="#A0CFF2"
-            android:text="새 계정 만들기"
-            android:textSize="20dp"
-            android:textColor="#ffffff"
-            android:textAllCaps="false"/>
 
         <Button
             android:id="@+id/findID"
@@ -78,7 +78,7 @@
             android:layout_toLeftOf="@+id/findPW"
             android:onClick="btnfindid"
             android:text="아이디 찾기"
-            android:background="#ffffff"
+            android:background="#00ff0000"
             android:textAllCaps="false" />
 
         <Button
@@ -89,8 +89,55 @@
             android:layout_alignRight="@+id/PW"
             android:onClick="btnfindpw"
             android:text="비밀번호 찾기"
-            android:background="#ffffff"
+            android:background="#00ff0000"
             android:textAllCaps="false"/>
+
+        <ImageButton
+            android:id="@+id/facebook"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/facebook"
+            android:scaleType="centerInside"
+            android:background="#00ff0000"
+            android:layout_marginTop="450dp"
+            android:layout_marginLeft="80dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text = "페이스북으로 로그인"
+            android:textSize="15dp"
+            android:layout_marginTop="530dp"
+            android:layout_marginLeft="60dp"
+            android:textColor="#000"/>
+
+        <ImageButton
+            android:layout_width="65dp"
+            android:layout_height="80dp"
+            android:src="@drawable/naver"
+            android:scaleType="centerInside"
+            android:background="#00ff0000"
+            android:layout_marginTop="450dp"
+            android:layout_marginLeft="250dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text = "네이버로 로그인"
+            android:textSize="15dp"
+            android:layout_marginTop="530dp"
+            android:layout_marginLeft="230dp"
+            android:textColor="#000"/>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="100dp"
+            android:background="#BDBDBD"
+            android:layout_marginLeft="210dp"
+            android:layout_marginTop="450dp"/>
+
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

@@ -51,7 +51,7 @@ public class Mainpage extends AppCompatActivity {
     String university, department, opic;
     Double grades, toeic, toss, training, intern, volunteer, passfail, comsum;
     int grades2, toeic2, opic2, toss2, training2, intern2, volunteer2, finaleducation2, certificate2;
-    EditText editSearch;
+    View editSearch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +60,7 @@ public class Mainpage extends AppCompatActivity {
         ActionBar ab = getSupportActionBar();
         ab.setTitle("야너두");
 
-        editSearch = (EditText) findViewById(R.id.main_search);
+        editSearch = (View) findViewById(R.id.main_search);
 
         editSearch.setOnClickListener(new View.OnClickListener() {
             @Override

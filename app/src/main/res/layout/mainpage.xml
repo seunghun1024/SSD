@@ -6,37 +6,60 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"
-        android:orientation="vertical">
+        android:layout_height="180dp"
+        android:orientation="vertical"
+        android:background="#fbbd00"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
-            <EditText
-                android:id="@+id/main_search"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="야너두"
+                android:textSize="40dp"
+                android:textStyle="bold"
+                android:textColor="#fff"
+                android:layout_marginLeft="20dp"/>
                 />
             <ImageButton
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="4"
+                android:background="#fbbd00"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:padding="0sp"
                 android:scaleType="centerInside"
-                android:src="@drawable/dot"/>
+                android:src="@drawable/person"
+                android:layout_marginLeft="220dp"
+                android:layout_marginTop="5dp"/>
         </LinearLayout>
 
-        <Button
-            android:id="@+id/button"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2"
-            android:onClick="btntest"
-            android:text="Button" />
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <View
+                android:id="@+id/main_search"
+                android:layout_width="320dp"
+                android:layout_height="50dp"
+                android:background="@drawable/square"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                />
+            <ImageButton
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/search"
+                android:scaleType="centerInside"
+                android:background="#fff"
+                android:layout_marginTop="10dp"
+                />
+
+        </LinearLayout>
+
+
 
     </LinearLayout>
 
