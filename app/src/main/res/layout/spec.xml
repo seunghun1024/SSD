@@ -251,16 +251,22 @@
 
         <Button
             android:id="@+id/specmodify"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="수정하기" />
+            android:text="수정하기"
+            android:background="@drawable/radius"
+            android:textColor="#fff"
+            android:textSize="30dp"/>
 
         <Button
             android:id="@+id/specreset"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="스펙 초기화" />
+            android:text="스펙 초기화"
+            android:background="@drawable/radius"
+            android:textColor="#fff"
+            android:textSize="30dp"/>
     </LinearLayout>
 </LinearLayout>

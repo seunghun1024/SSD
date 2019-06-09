@@ -7,7 +7,7 @@
         android:id="@+id/signup_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="#52A7E8"
+        android:background="#fbbd00"
         android:layout_gravity="center"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true">
@@ -65,7 +65,8 @@
 
                 android:id="@+id/insertgrades"
                 android:layout_width="289dp"
-                android:layout_height="50dp" />
+                android:layout_height="50dp"
+                android:hint="4.5 기준"/>
 
 
         </TableRow>
@@ -87,7 +88,7 @@
         <TableRow>
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="70dp"
                 android:text="오픽"
                 android:textSize="25sp"
                 />
@@ -95,7 +96,8 @@
 
                 android:id="@+id/insertopic"
                 android:layout_width="289dp"
-                android:layout_height="50dp" />
+                android:layout_height="70dp"
+                android:hint="없으면 0, IM이면 1, IM2이면 2, IM3이면 3, IH이면 4, IL이면 5, AL이면 6"/>
 
 
         </TableRow>
@@ -207,7 +209,7 @@
 
     <Button
         android:id="@+id/save"
-        android:background="#52A7E8"
+        android:background="#fbbd00"
         android:textColor="#fff"
         android:textSize="25dp"
         android:layout_width="wrap_content"

@@ -15,7 +15,9 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Id" />
+            android:text="Id"
+            android:textSize="30dp"
+            />
 
         <EditText
             android:id="@+id/ID"
@@ -36,7 +38,8 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Pw" />
+            android:text="Pw"
+            android:textSize="30dp"/>
 
         <EditText
             android:id="@+id/PW"
@@ -58,7 +61,8 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Name" />
+            android:text="Name"
+            android:textSize="30dp"/>
 
         <EditText
             android:id="@+id/NAME"
@@ -80,7 +84,8 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="PhoneNumber" />
+            android:text="PhoneNumber"
+            android:textSize="30dp"/>
 
         <EditText
             android:id="@+id/PHONE"
@@ -93,8 +98,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:layout_height="80dp"
         android:orientation="horizontal">
 
         <Button
@@ -102,13 +106,20 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="수정하기" />
+            android:text="수정하기"
+            android:background="@drawable/radius"
+            android:textColor="#fff"
+            android:textSize="25dp"/>
 
         <Button
             android:id="@+id/infoleave"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="탈퇴하기" />
+            android:text="탈퇴하기"
+            android:background="@drawable/radius"
+            android:textColor="#fff"
+            android:textSize="25dp"/>
+
     </LinearLayout>
 </LinearLayout>

@@ -7,7 +7,7 @@
         android:id="@+id/findpw_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="#52A7E8"
+        android:background="#fbbd00"
         android:layout_gravity="center"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true">
@@ -153,7 +153,7 @@
             android:layout_width="100dp"
             android:layout_height="40dp"
             android:layout_gravity="center"
-            android:backgroundTint="#52A7E8"
+            android:backgroundTint="#fbbd00"
             android:text="확 인"
             android:textColor="#ffffff"/>
 
