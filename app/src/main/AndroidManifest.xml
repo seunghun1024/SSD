@@ -37,7 +37,6 @@
         <activity android:name=".Mainpage" />
         <activity android:name=".UserInfo" />
         <activity android:name=".Spec" />
-        <activity android:name=".PassWhether" />
 
         <uses-library
             android:name="org.apache.http.legacy"

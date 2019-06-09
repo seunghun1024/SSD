@@ -119,10 +119,6 @@ public class MainActivity extends AppCompatActivity {
         task.execute();
     }
 
-    public void btnsignup(View v) {
-        Intent signuppage = new Intent(this, SignupPage.class);
-        startActivity(signuppage);
-    }
 
     public void btnfindid(View v) {
         Intent findidpage = new Intent(this, FindId.class);

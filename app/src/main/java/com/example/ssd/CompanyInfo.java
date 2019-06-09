@@ -34,6 +34,7 @@ import static com.example.ssd.Spec.spectoeic;
 import static com.example.ssd.Spec.spectoss;
 import static com.example.ssd.Spec.spectraining;
 import static com.example.ssd.Spec.specvolunteer;
+import static java.lang.Thread.sleep;
 
 
 public class CompanyInfo extends AppCompatActivity {
@@ -100,6 +101,7 @@ public class CompanyInfo extends AppCompatActivity {
                         passabc();
                     }
                 }).start();
+
 
                 Intent intent = new Intent(getApplicationContext(),PredictResult.class);
                 startActivity(intent);
@@ -452,6 +454,7 @@ public class CompanyInfo extends AppCompatActivity {
             predictiony = 1;
             predict_result = "합격";
             System.out.println("합격~~");
+
         }else{
             predictiony = 0;
             predict_result = "불합격";

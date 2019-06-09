@@ -20,5 +20,13 @@
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/Textview_predict_result"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text=""
+        android:layout_marginTop="20dp"
+        android:gravity="center"/>
+
 
 </LinearLayout>

@@ -84,7 +84,6 @@ public class Mainpage extends AppCompatActivity {
 
 
         editSearch = (View) findViewById(R.id.main_search);
-        btntest = (Button) findViewById(R.id.btntest);
 
 
         editSearch.setOnClickListener(new View.OnClickListener() {
@@ -95,13 +94,6 @@ public class Mainpage extends AppCompatActivity {
             }
         });
 
-        btntest.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),PassWhether.class);
-                startActivity(intent);
-            }
-        });
 
         infoBtn = (ImageButton) findViewById(R.id.info_btn);
         infoBtn.setOnClickListener(new View.OnClickListener() {
@@ -330,7 +322,7 @@ public class Mainpage extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 realposition = position;
                 selectprise = mprisename.get(position);
-                mListView.setSelector(new PaintDrawable(0xffff0000));
+                mListView.setSelector(new PaintDrawable(0xF5DA81));
             }
         });
 
@@ -357,8 +349,4 @@ public class Mainpage extends AppCompatActivity {
         alert.show();
     }
 
-    public void btntest(View v) {
-        Intent test = new Intent(Mainpage.this, PassWhether.class);
-        startActivity(test);
-    }
 }
