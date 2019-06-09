@@ -1,15 +1,14 @@
 package com.example.ssd;
-
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import org.achartengine.ChartFactory;
 import org.achartengine.GraphicalView;
@@ -40,10 +39,9 @@ import static com.example.ssd.Spec.spectoss;
 import static com.example.ssd.Spec.spectraining;
 import static com.example.ssd.Spec.specvolunteer;
 
-public class PredictResult extends AppCompatActivity {
+public class BarChartActivity extends AppCompatActivity {
 
-    CompanyInfo cominfo;
-    TextView result_text;
+    static String enterid;
     String passgrades, passtoeic, passopic, passtoss, passtraining, passintern, passvolunteer;
     String nopassgrades, nopasstoeic, nopassopic, nopasstoss, nopasstraining, nopassintern, nopassvolunteer;
     int entergrades, entertoeic, enteropic, entertoss, entertraining, enterintern, entervolunteer;
@@ -58,8 +56,6 @@ public class PredictResult extends AppCompatActivity {
     static ArrayList<Double> volunteer = new ArrayList<Double>();
     static ArrayList<Integer> pass = new ArrayList<Integer>();
     int count = 0;
-    Search search;
-    static String predict_result;
     static double theta0 = 0;
     static double theta1 = 1;
     static double theta2 = 1;
@@ -73,42 +69,45 @@ public class PredictResult extends AppCompatActivity {
     HttpResponse response;
     HttpClient httpclient;
     List<NameValuePair> nameValuePairs;
+    Search search;
+
     private GraphicalView mChartView;
     private GraphicalView mChartView2;
+
     private String[] mMonth = new String[]{
 
             " ", " ", " "
 
     };
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.predict_result);
 
+    @Override
+
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+
+        super.onCreate(savedInstanceState);
+
+        setContentView(R.layout.activity_bar_chart);
+
+
+        enterid = search.enterid;
 
         entercheck();
         passcheck();
         try{
-            Thread.sleep(300);
+            Thread.sleep(500);
         }catch(Exception e){
 
         }
         nopasscheck();
         try{
-            Thread.sleep(300);
+            Thread.sleep(500);
         }catch(Exception e){
 
         }
         passabc();
 
-        result_text = (TextView)findViewById(R.id.Textview_predict_result);
-        if(predict_result == "합격") {
-            result_text.setText("축하드립니다." + predict_result + "입니다.");
-        }else {
-            result_text.setText(predict_result + "입니다.");
-        }
-
         drawChart();
+
     }
     public void entercheck() {
         class EnterCheck extends AsyncTask<String, Void, String> {
@@ -118,18 +117,18 @@ public class PredictResult extends AppCompatActivity {
                     httpclient = new DefaultHttpClient();
                     httppost = new HttpPost("http://203.234.62.96:7979/entercheck.php");
                     nameValuePairs = new ArrayList<NameValuePair>(2);
-                    nameValuePairs.add(new BasicNameValuePair("enterId", search.enterid));
+                    nameValuePairs.add(new BasicNameValuePair("enterId", enterid));
                     httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
                     response = httpclient.execute(httppost);
 
                     ResponseHandler<String> responseHandler = new BasicResponseHandler();
                     final String response = httpclient.execute(httppost, responseHandler);
-                    System.out.println("Response : " + response);
+                   // System.out.println("Response : " + response);
 
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            //        System.out.println("Response from PHP : " + response);
+                    //        System.out.println("Response from PHP : " + response);
                             //dialog.dismiss();
                         }
                     });
@@ -142,7 +141,7 @@ public class PredictResult extends AppCompatActivity {
                     enterintern = Integer.parseInt(token.nextToken());
                     entervolunteer = Integer.parseInt(token.nextToken());
                     entersum = entergrades + entertoeic + enteropic + entertoss + entertraining + enterintern + entervolunteer;
-                    // System.out.println(entergrades + "~~" + entertraining + "~~" + enterintern + "~~1" + entervolunteer);
+                   // System.out.println(entergrades + "~~" + entertraining + "~~" + enterintern + "~~1" + entervolunteer);
 
 
 
@@ -152,7 +151,7 @@ public class PredictResult extends AppCompatActivity {
 
                 {
                     // dialog.dismiss();
-                    System.out.println("Exception2 : " + e.getMessage());
+                    System.out.println("Exception : " + e.getMessage());
                 }
                 return "test!!";
             }
@@ -160,6 +159,7 @@ public class PredictResult extends AppCompatActivity {
         EnterCheck task2 = new EnterCheck();
         task2.execute();
     }
+
     public void passcheck() {
         class PassCheck extends AsyncTask<String, Void, String> {
             @SuppressLint("WrongThread")
@@ -168,7 +168,7 @@ public class PredictResult extends AppCompatActivity {
                     httpclient = new DefaultHttpClient();
                     httppost = new HttpPost("http://203.234.62.96:7979/passcheck.php");
                     nameValuePairs = new ArrayList<NameValuePair>(2);
-                    nameValuePairs.add(new BasicNameValuePair("enterId", search.enterid));
+                    nameValuePairs.add(new BasicNameValuePair("enterId", enterid));
                     httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
                     response = httpclient.execute(httppost);
 
@@ -179,13 +179,13 @@ public class PredictResult extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            //   System.out.println("Response from PHP : " + response);
+                         //   System.out.println("Response from PHP : " + response);
                             //dialog.dismiss();
                         }
                     });
 
                     StringTokenizer token = new StringTokenizer(response, "-");
-                    //  System.out.println(token.countTokens());
+                  //  System.out.println(token.countTokens());
                     int i = token.countTokens();
                     //System.out.println(i);
                     for(int j = 0; j < i; j++){
@@ -238,7 +238,7 @@ public class PredictResult extends AppCompatActivity {
                     httpclient = new DefaultHttpClient();
                     httppost = new HttpPost("http://203.234.62.96:7979/nopasscheck.php");
                     nameValuePairs = new ArrayList<NameValuePair>(2);
-                    nameValuePairs.add(new BasicNameValuePair("enterId", search.enterid));
+                    nameValuePairs.add(new BasicNameValuePair("enterId", enterid));
                     httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
                     response = httpclient.execute(httppost);
 
@@ -249,7 +249,7 @@ public class PredictResult extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            // System.out.println("Response from PHP : " + response);
+                           // System.out.println("Response from PHP : " + response);
                             //dialog.dismiss();
                         }
                     });
@@ -259,7 +259,7 @@ public class PredictResult extends AppCompatActivity {
                     int i = token.countTokens();
                     for(int j = 0; j < i; j++){
                         String qq = token.nextToken();
-                        // System.out.println(qq);
+                       // System.out.println(qq);
                         StringTokenizer token2 = new StringTokenizer(qq, ",");
                         nopassgrades = token2.nextToken();
                         nopasstoeic = token2.nextToken();
@@ -276,7 +276,7 @@ public class PredictResult extends AppCompatActivity {
                         intern.add((enterintern/entersum)*Double.valueOf(nopassintern));
                         volunteer.add((entervolunteer/entersum)*Double.valueOf(nopassvolunteer));
                         pass.add(0);
-                        // System.out.println(nopassgrades + "~~" + nopasstraining + "~~" + nopassintern + "~~3" + nopassvolunteer);
+                       // System.out.println(nopassgrades + "~~" + nopasstraining + "~~" + nopassintern + "~~3" + nopassvolunteer);
                     }
 
 
@@ -359,11 +359,9 @@ public class PredictResult extends AppCompatActivity {
         double predictiony = Sigmoid(Theta1 * specgrades + Theta2 * spectoeic + Theta3 * specopic + Theta4 * spectoss + Theta5 * spectraining + Theta6 * specintern + theta7 * specvolunteer + Theta0);
         if(predictiony >= 0.5) {
             predictiony = 1;
-            predict_result = "합격";
             System.out.println("합격~~");
         }else{
             predictiony = 0;
-            predict_result = "불합격";
             System.out.println("불합격!!");
         }
         /*for (int j = 0; j < pass.size(); j++) { // 구한 식의 theta값들로 test_set의 y값을 비교하기위한 for문
@@ -386,9 +384,7 @@ public class PredictResult extends AppCompatActivity {
         }*/
         System.out.println("평균학점 : " + avegrades + "  평균토익 : " + avetoeic + "  내 학점 : " + specgrades + "  내 토익 : " + spectoeic);
     }
-    public static double Sigmoid(double Beta){
-        return 1 / (1 + Math.pow(Math.E, -Beta));
-    }
+
 
     private void drawChart() {
 
@@ -404,13 +400,13 @@ public class PredictResult extends AppCompatActivity {
 
         XYSeries incomeSeries = new XYSeries("평균학점");
 
-        XYSeries incomeSeries2 = new XYSeries("평균토익");
+        XYSeries incomeSeries2 = new XYSeries("평균토익점수");
 
         // Creating an XYSeries for Expense
 
         XYSeries expenseSeries = new XYSeries("내 학점");
 
-        XYSeries expenseSeries2 = new XYSeries("내 토익");
+        XYSeries expenseSeries2 = new XYSeries("내 토익점수");
 
         for (int i = 0; i < x.length; i++) {
 
@@ -490,7 +486,7 @@ public class PredictResult extends AppCompatActivity {
 
         multiRenderer2.setXLabels(1);
 
-        multiRenderer2.setChartTitle("합격자 평균 토익 vs 내 토익");
+        multiRenderer2.setChartTitle("합격자 평균 토익점수 vs 내 토익점수");
 
         multiRenderer2.setXTitle("");
 
@@ -507,7 +503,7 @@ public class PredictResult extends AppCompatActivity {
 
 
         multiRenderer.setChartTitleTextSize(40);
-        multiRenderer2.setChartTitleTextSize(40);
+        multiRenderer2.setChartTitleTextSize(35);
 
         multiRenderer.setAxisTitleTextSize(40);
         multiRenderer2.setAxisTitleTextSize(40);
@@ -517,7 +513,7 @@ public class PredictResult extends AppCompatActivity {
         multiRenderer.setLabelsTextSize(40);
         multiRenderer2.setLabelsTextSize(40);
         multiRenderer.setLegendTextSize(40);
-        multiRenderer2.setLegendTextSize(40);
+        multiRenderer2.setLegendTextSize(30);
 
         //setting zoom buttons visiblity
 
@@ -690,5 +686,9 @@ public class PredictResult extends AppCompatActivity {
 
                 LinearLayout.LayoutParams.FILL_PARENT));
 
+    }
+
+    public static double Sigmoid(double Beta){
+        return 1 / (1 + Math.pow(Math.E, -Beta));
     }
 }
