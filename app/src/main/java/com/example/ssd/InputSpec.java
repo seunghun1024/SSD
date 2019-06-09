@@ -2,6 +2,7 @@ package com.example.ssd;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
@@ -33,7 +34,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.example.ssd.SignupPage.Id;
-import static java.lang.Thread.sleep;
 
 public class InputSpec extends AppCompatActivity {
     private Spinner spinner;
@@ -80,6 +80,8 @@ public class InputSpec extends AppCompatActivity {
                 new Thread(new Runnable() {
                     public void run() {
                         aa();
+                        Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                        startActivity(intent);
                     }
                 }).start();
             }
@@ -192,8 +194,8 @@ public class InputSpec extends AppCompatActivity {
                     httppost = new HttpPost("http://203.234.62.96:7979/insertspec.php");
                     nameValuePairs = new ArrayList<NameValuePair>(2);
                     nameValuePairs.add(new BasicNameValuePair("Id", Id));
-                    nameValuePairs.add(new BasicNameValuePair("Academic", "qq"));
-                    nameValuePairs.add(new BasicNameValuePair("Major", "ww"));
+                    nameValuePairs.add(new BasicNameValuePair("Academic", Academic));
+                    nameValuePairs.add(new BasicNameValuePair("Major", Major));
                     nameValuePairs.add(new BasicNameValuePair("inGrades", ingrades.getText().toString()));
                     nameValuePairs.add(new BasicNameValuePair("inToeic", intoeic.getText().toString()));
                     nameValuePairs.add(new BasicNameValuePair("inOpic", inopic.getText().toString()));

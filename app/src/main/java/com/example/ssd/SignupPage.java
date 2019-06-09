@@ -60,8 +60,7 @@ public class SignupPage extends AppCompatActivity {
         btninsert.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(getApplicationContext(),InputSpec.class);
-                startActivity(intent);
+                insert();
             }
         });
 
@@ -206,8 +205,6 @@ public class SignupPage extends AppCompatActivity {
                 super.onPostExecute(s);
                 // loading.dismiss();
                 System.out.println("백그라운드 끝");
-                Intent mainpage = new Intent(SignupPage.this, MainActivity.class);
-                startActivity(mainpage);
             }
 
             @Override
@@ -243,6 +240,8 @@ public class SignupPage extends AppCompatActivity {
                     // Read Server Response
                     while ((line = reader.readLine()) != null) {
                         sb.append(line);
+                        Intent intent = new Intent(getApplicationContext(),InputSpec.class);
+                        startActivity(intent);
                         break;
                     }
                     return sb.toString();

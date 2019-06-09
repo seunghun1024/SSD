@@ -2,6 +2,7 @@ package com.example.ssd;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -391,10 +392,6 @@ public class PassWhether extends AppCompatActivity {
                     nameValuePairs.add(new BasicNameValuePair("enterId", enterid));
                     httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
                     response = httpclient.execute(httppost);
-
-                    ResponseHandler<String> responseHandler = new BasicResponseHandler();
-                    final String response = httpclient.execute(httppost, responseHandler);
-                    System.out.println("noResponse : " + response);
 
 
                 } catch (

@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -39,6 +40,7 @@ import static com.example.ssd.MainActivity.sttid;
 public class Mainpage extends AppCompatActivity {
     public static String selectprise = "";
     private ListView mListView;
+    private Button btntest;
     final static ArrayList<String> mprisename = new ArrayList<>();
     final static ArrayList<String> mpriseinfo = new ArrayList<>();
     final static ArrayList<String> muid = new ArrayList<>();
@@ -61,11 +63,21 @@ public class Mainpage extends AppCompatActivity {
         ab.setTitle("야너두");
 
         editSearch = (View) findViewById(R.id.main_search);
+        btntest = (Button) findViewById(R.id.btntest);
+
 
         editSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),Search.class);
+                startActivity(intent);
+            }
+        });
+
+        btntest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),PassWhether.class);
                 startActivity(intent);
             }
         });
@@ -155,7 +167,7 @@ public class Mainpage extends AppCompatActivity {
         }
         Enterpriselistsub task = new Enterpriselistsub();
         task.execute();
-    }
+    }/*
 
     private String passorfail() {
         class Passorfailsub extends AsyncTask<String, Void, String> {
@@ -214,10 +226,10 @@ public class Mainpage extends AppCompatActivity {
                             certificate2 = Integer.parseInt(str.nextToken());
 
                             comsum = (grades2 + toeic2 + opic2 + toss2 + training2 + intern2 + volunteer2 + finaleducation2 + certificate2) / 100d;
-                            passfail = (grades * (grades2/comsum)) + (toeic * (toeic2/comsum)) + (toss * (toss2/comsum)) + (training * (training2/comsum)) + (intern * (intern2/comsum)) + (volunteer * (volunteer2/comsum) /* finale~~~~ 추가해야됨 ~~~~~~~~~*/);
+                            passfail = (grades * (grades2/comsum)) + (toeic * (toeic2/comsum)) + (toss * (toss2/comsum)) + (training * (training2/comsum)) + (intern * (intern2/comsum)) + (volunteer * (volunteer2/comsum) *//* finale~~~~ 추가해야됨 ~~~~~~~~~*//*);
                             System.out.println(passfail);
 
-                            /*for (int i = 0; i < countTokens; i++) {
+                            *//*for (int i = 0; i < countTokens; i++) {
                                 if(i == 0) {
                                     String uid = str.nextToken();
                                     System.out.println("uid값 1 : " + uid);
@@ -225,7 +237,7 @@ public class Mainpage extends AppCompatActivity {
                                     String uid = str.nextToken();
                                     System.out.println("uid값 2 : " + uid);
                                 }
-                            }*/
+                            }*//*
                         }
                     });
 
@@ -243,7 +255,7 @@ public class Mainpage extends AppCompatActivity {
 
         return "결과값";
     }
-
+*/
 
     private void dataSetting() {
         ListViewAdapter mListAdapter = new ListViewAdapter();
