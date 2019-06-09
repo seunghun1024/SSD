@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.drawable.PaintDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
@@ -18,8 +19,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
+import android.support.v4.view.ViewPager;
+import android.widget.ViewFlipper;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -54,6 +59,9 @@ public class Mainpage extends AppCompatActivity {
     Double grades, toeic, toss, training, intern, volunteer, passfail, comsum;
     int grades2, toeic2, opic2, toss2, training2, intern2, volunteer2, finaleducation2, certificate2;
     View editSearch;
+    ImageButton infoBtn;
+    ViewFlipper v_fllipper;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,12 +90,49 @@ public class Mainpage extends AppCompatActivity {
             }
         });
 
+        infoBtn = (ImageButton) findViewById(R.id.info_btn);
+        infoBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent info = new Intent(getApplicationContext(),UserInfo.class);
+                startActivity(info);
+            }
+        });
+
+        int images[] = {
+                R.drawable.home1,
+                R.drawable.home2,
+                R.drawable.home3
+        };
+
+        v_fllipper = findViewById(R.id.image_slide);
+
+        for(int image : images) {
+            fllipperImages(image);
+        }
+
+
+
         mListView = (ListView) findViewById(R.id.enterpriseview);
 
         Spec spec = new Spec();
         spec.SpecCheck();
 
         enterpriselist();
+    }
+
+    // 이미지 슬라이더 구현 메서드
+    public void fllipperImages(int image) {
+        ImageView imageView = new ImageView(this);
+        imageView.setBackgroundResource(image);
+
+        v_fllipper.addView(imageView);      // 이미지 추가
+        v_fllipper.setFlipInterval(2000);       // 자동 이미지 슬라이드 딜레이시간(1000 당 1초)
+        v_fllipper.setAutoStart(true);          // 자동 시작 유무 설정
+
+        // animation
+        v_fllipper.setInAnimation(this,android.R.anim.slide_in_left);
+        v_fllipper.setOutAnimation(this,android.R.anim.slide_out_right);
     }
 
     @Override
