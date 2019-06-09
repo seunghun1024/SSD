@@ -17,7 +17,6 @@
         android:usesCleartextTraffic="true">
         <activity android:name=".CompanyInfo"></activity>
         <activity android:name=".PredictResult" />
-        <activity android:name=".SearchResult" />
         <activity android:name=".InputSpec" />
         <activity android:name=".Search" />
         <activity android:name=".FirstScreen">

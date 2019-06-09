@@ -61,6 +61,7 @@ public class Mainpage extends AppCompatActivity {
     View editSearch;
     ImageButton infoBtn;
     ViewFlipper v_fllipper;
+    Button specBtn, questionBtn, logoutBtn;
 
 
     @Override
@@ -90,12 +91,38 @@ public class Mainpage extends AppCompatActivity {
             }
         });
 
-        /*infoBtn = (ImageButton) findViewById(R.id.info_btn);
+        infoBtn = (ImageButton) findViewById(R.id.info_btn);
         infoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent info = new Intent(getApplicationContext(),UserInfo.class);
                 startActivity(info);
+            }
+        });
+
+        specBtn = (Button) findViewById(R.id.spec_btn);
+        specBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent info = new Intent(getApplicationContext(),Spec.class);
+                startActivity(info);
+            }
+        });
+
+        questionBtn = (Button) findViewById(R.id.question_btn);
+        questionBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Intent info = new Intent(getApplicationContext(),UserInfo.class);
+                //startActivity(info);
+            }
+        });
+
+        logoutBtn = (Button) findViewById(R.id.logout_btn);
+        logoutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                logOut();
             }
         });
 
@@ -110,7 +137,7 @@ public class Mainpage extends AppCompatActivity {
         for(int image : images) {
             fllipperImages(image);
         }
-*/
+
 
 
         mListView = (ListView) findViewById(R.id.enterpriseview);
@@ -142,30 +169,7 @@ public class Mainpage extends AppCompatActivity {
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch(item.getItemId()) {
-            case R.id.info:
-                Intent userinfo = new Intent(this, UserInfo.class);
-                startActivity(userinfo);
-                return true;
-            case R.id.logout:
-                logOut();
-                return true;
-            case R.id.spec:
-                Intent spec = new Intent(this, Spec.class);
-                startActivity(spec);
-                return true;
-            case R.id.comstatus:
-                Toast.makeText(this, "comstatus 버튼 눌렀을 시 구현하기", Toast.LENGTH_SHORT).show();
-                return true;
-            case R.id.interestcom:
-                Toast.makeText(this, "interestcom 버튼 눌렀을 시 구현하기", Toast.LENGTH_SHORT).show();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
+
 
     public void enterpriselist() {
         class Enterpriselistsub extends AsyncTask<String, Void, String> {

@@ -6,7 +6,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="210dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:background="#fbbd00"
         >
@@ -64,32 +64,34 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="horizontal">
 
             <Button
+                android:id="@+id/spec_btn"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
-                android:background="#fbbd00"
+                android:background="#00ff0000"
                 android:text="나의스펙"
                 android:textSize="20dp"
-                android:textColor="#fff"
-                android:layout_marginLeft="20dp"/>
+                android:textColor="@drawable/text_selector"
+                android:layout_marginLeft="15dp"/>
             <Button
-                android:layout_width="120dp"
+                android:id="@+id/question_btn"
+                android:layout_width="140dp"
                 android:layout_height="wrap_content"
-                android:background="#fbbd00"
+                android:background="#00ff0000"
                 android:text="선배에게 물어봐"
                 android:textSize="20dp"
-                android:textColor="#fff"
-                android:layout_marginLeft="160dp"
+                android:textColor="@drawable/text_selector"
                 />
             <Button
+                android:id="@+id/logout_btn"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
-                android:background="#fbbd00"
+                android:background="#00ff0000"
                 android:text="로그아웃"
                 android:textSize="20dp"
-                android:textColor="#fff"/>
+                android:textColor="@drawable/text_selector"/>
         </LinearLayout>
 
 

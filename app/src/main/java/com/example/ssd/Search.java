@@ -31,6 +31,7 @@ import static com.example.ssd.MainActivity.sttid;
 
 public class Search extends AppCompatActivity {
 
+    static String enterid;
     public static String selectprise = "";
     private ListView ListViewtext;
     private EditText search;
@@ -120,7 +121,12 @@ public class Search extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 realposition = position;
                 selectprise = searchname.get(position);
-                ListViewtext.setSelector(new PaintDrawable(0xffff0000));
+                ListViewtext.setSelector(new PaintDrawable(0xF5DA81));
+                enterid = selectprise;
+
+                Intent info = new Intent(getApplicationContext(),CompanyInfo.class);
+                startActivity(info);
+
             }
         });
 
