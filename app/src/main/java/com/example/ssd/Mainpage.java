@@ -22,6 +22,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.support.v4.view.ViewPager;
 import android.widget.ViewFlipper;
@@ -62,6 +63,7 @@ public class Mainpage extends AppCompatActivity {
     ImageButton infoBtn;
     ViewFlipper v_fllipper;
     Button specBtn, questionBtn, logoutBtn;
+    TextView home;
 
 
     @Override
@@ -70,6 +72,16 @@ public class Mainpage extends AppCompatActivity {
         setContentView(R.layout.mainpage);
         ActionBar ab = getSupportActionBar();
         ab.setTitle("야너두");
+
+        home = (TextView)findViewById(R.id.home);
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),Mainpage.class);
+                startActivity(intent);
+            }
+        });
+
 
         editSearch = (View) findViewById(R.id.main_search);
         btntest = (Button) findViewById(R.id.btntest);
