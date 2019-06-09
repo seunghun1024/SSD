@@ -90,7 +90,7 @@ public class Mainpage extends AppCompatActivity {
             }
         });
 
-        infoBtn = (ImageButton) findViewById(R.id.info_btn);
+        /*infoBtn = (ImageButton) findViewById(R.id.info_btn);
         infoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -110,7 +110,7 @@ public class Mainpage extends AppCompatActivity {
         for(int image : images) {
             fllipperImages(image);
         }
-
+*/
 
 
         mListView = (ListView) findViewById(R.id.enterpriseview);
