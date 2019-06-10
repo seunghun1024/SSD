@@ -228,16 +228,12 @@ public class Spec extends AppCompatActivity {
                     specdepartment = token.nextToken();
                     specgrades = Double.valueOf(token.nextToken());
                     spectoeic = Double.valueOf(token.nextToken());
-                    String a = token.nextToken();
-                    // specopic = token.nextToken();
+                    specopic = Double.valueOf(token.nextToken());
                     spectoss = Double.valueOf(token.nextToken());
                     spectraining = Double.valueOf(token.nextToken());
                     specintern = Double.valueOf(token.nextToken());
                     specvolunteer = Double.valueOf(token.nextToken());
 
-                    if(a == "AL"){
-                        specopic = 2;
-                    }
 
                     editTextGrade.setText(Double.toString(specgrades));
                     editTextTOEIC.setText(Double.toString(spectoeic));
