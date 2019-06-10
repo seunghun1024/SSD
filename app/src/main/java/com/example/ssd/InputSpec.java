@@ -174,17 +174,19 @@ public class InputSpec extends AppCompatActivity {
                 try {
                     int a = 0, b = 0, c = 0;
 
-                    if(Studytrain2.contains("studytrainyes")){
+                    System.out.println(Studytrain2 + " --- " + Intern2 + " --- " + Volunteer2);
+
+                    if(Studytrain2.contains("studytrainyes2")){
                         a = 1;
                     }else{
                         a = 0;
                     }
-                    if(Intern2.contains("internbuttonyes")){
+                    if(Intern2.contains("internyes2")){
                         b = 1;
                     }else{
                         b = 0;
                     }
-                    if(Volunteer2.contains("volunteerbuttonyes")){
+                    if(Volunteer2.contains("volunteeryes2")){
                         c = 1;
                     }else{
                         c = 0;
