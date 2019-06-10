@@ -206,8 +206,8 @@ public class InputSpec extends AppCompatActivity {
                     httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
                     response = httpclient.execute(httppost);
 
-                    ResponseHandler<String> responseHandler = new BasicResponseHandler();
-                    final String response = httpclient.execute(httppost, responseHandler);
+                   // ResponseHandler<String> responseHandler = new BasicResponseHandler();
+                   // final String response = httpclient.execute(httppost, responseHandler);
                     System.out.println("noResponse : " + response);
                     System.out.println(Academic + "-" + Major + "-" + ingrades.getText().toString() + "-" + a + b);
 
